@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font: 300 70px/1 'Lato', sans-serif;
+  color: #444;
+  background: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock {
+  width: 500px;
+  text-align: center;
+  overflow: hidden;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+}
+
+.clock span {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  font-size: 70px;
+  font-weight: bold;
+  background: white;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.clock span:before,
+.clock span:after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  backface-visibility: hidden;
+  transition: transform 0.75s;
+}
+
+.clock span:before {
+  content: attr(data-old);
+  z-index: 1;
+  transform: translate3d(0,0,0);
+}
+
+.clock .flip:before {
+  transform: translate3d(0,102.5%,0);
+}
+
+.clock span:after {
+  content: attr(data-now);
+  z-index: 2;
+  transform: translate3d(0,-102.5%,0);
+}
+
+.clock .flip:after {
+  transform: translate3d(0,0,0);
+}
+
+.label {
+  font: 300 20px/1 'Lato', sans-serif;
+  font-variant: small-caps;
+  text-align: center;
+  width: 500px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.label .info {
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+}
